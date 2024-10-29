@@ -10,6 +10,7 @@ namespace HW26
 		private readonly LinkedList<string> ListOfReaders = new();
 		public readonly ObservableCollection<Book> AvailableBooksCollection = new();
 		private readonly SortedList<string, Book> BooksISBNSortedList = new();
+		private readonly HashSet<string> Genres = new();
 		
 		public void ReturnBook(Book book)
 		{
@@ -58,6 +59,16 @@ namespace HW26
 		public void RemoveBookByISBN(string isbn)
 		{
 			BooksISBNSortedList.Remove(isbn);
+		}
+
+		public void AddGenre(string genre)
+		{
+			Genres.Add(genre);
+		}
+
+		public List<string> ShowGenres()
+		{
+			return Genres.ToList();
 		}
 	}
 }
