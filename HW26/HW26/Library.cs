@@ -9,6 +9,7 @@ namespace HW26
 		private readonly Stack<Book> ReturnBooks = new();
 		private readonly LinkedList<string> ListOfReaders = new();
 		public readonly ObservableCollection<Book> AvailableBooksCollection = new();
+		private readonly SortedList<string, Book> BooksISBNSortedList = new();
 		
 		public void ReturnBook(Book book)
 		{
@@ -39,6 +40,7 @@ namespace HW26
 		{
 			Books.Add(book);
 			AvailableBooksCollection.Add(book);
+			BooksISBNSortedList.Add(book.ISBN, book);
 		}
 
 		public void Remove(string isbn)
@@ -46,6 +48,16 @@ namespace HW26
 			var book = Books.Where(b => b.ISBN == isbn).FirstOrDefault();
 			Books.Remove(book);
 			AvailableBooksCollection.Remove(book);
+		}
+
+		public Book FindBookByISBN(string isbn)
+		{
+			return BooksISBNSortedList[isbn];
+		}
+
+		public void RemoveBookByISBN(string isbn)
+		{
+			BooksISBNSortedList.Remove(isbn);
 		}
 	}
 }
