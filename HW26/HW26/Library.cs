@@ -11,6 +11,7 @@ namespace HW26
 		public readonly ObservableCollection<Book> AvailableBooksCollection = new();
 		private readonly SortedList<string, Book> BooksISBNSortedList = new();
 		private readonly HashSet<string> Genres = new();
+		private readonly SortedSet<int> Years = new();
 		
 		public void ReturnBook(Book book)
 		{
@@ -69,6 +70,16 @@ namespace HW26
 		public List<string> ShowGenres()
 		{
 			return Genres.ToList();
+		}
+
+		public void AddYear(int year)
+		{
+			Years.Add(year);
+		}
+
+		public List<int> ShowYears()
+		{
+			return Years.ToList();
 		}
 	}
 }
